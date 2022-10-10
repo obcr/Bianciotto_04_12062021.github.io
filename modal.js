@@ -1,12 +1,3 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
 // DOM Elements
 const form = document.querySelector("form");
 const modalbg = document.querySelector(".bground");
@@ -23,8 +14,6 @@ const modalBody = document.querySelector(".modal-body");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// valid event
-btnSubmit.forEach((btn) => btn.addEventListener("click", valid));
 
 // launch modal form
 function launchModal() {
@@ -36,38 +25,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-
-// Valid form
-function validate() {
-  console.log('test');
-  let firstValid = checkFirst();
-  let lastValid = checkLast();
-  let emailValid = checkEmail();
-  let birthdateValid = checkbirthdate();
-  let quantityValid = checkquantity();
-  let locationValid = checklocation();
-  let checkbox1Valid = checkcheckbox1();
-
-  if (firstValid && lastValid && emailValid && birthdateValid && quantityValid && locationValid && checkbox1Valid) {
-    const data = {
-      firstValid: firstValid,
-      lastValid: lastValid,
-      emailValid: emailValid,
-      birthdateValid: birthdateValid,
-      quantityValid: quantityValid,
-      locationValid: locationValid,
-    };
-    console.log(data);
-    modalBody.innerHTML = "Merci ! Votre réservation a été reçue.";
-    modalBody.style.height = "250px";
-    modalBody.style.paddingTop = "50px";
-    modalBody.style.paddingLeft = "100px";
-    modalBody.style.paddingRight = "100px";
-    modalBody.style.textAlign = "center";
-    console.log("okValid");
-    return true;
-}
-}
+// Function of validation 
 
 function checkFirst() {
   const first = document.getElementById("first");
@@ -170,6 +128,41 @@ function checkcheckbox1() {
     return false;
   }
 }
+
+// Validation of form
+function validate() {
+  console.log('test');
+  let firstValid = checkFirst();
+  let lastValid = checkLast();
+  let emailValid = checkEmail();
+  let birthdateValid = checkbirthdate();
+  let quantityValid = checkquantity();
+  let locationValid = checklocation();
+  let checkbox1Valid = checkcheckbox1();
+
+  if (firstValid && lastValid && emailValid && birthdateValid && quantityValid && locationValid && checkbox1Valid) {
+    const data = {
+      firstValid: firstValid,
+      lastValid: lastValid,
+      emailValid: emailValid,
+      birthdateValid: birthdateValid,
+      quantityValid: quantityValid,
+      locationValid: locationValid,
+    };
+    console.log(data);
+    modalBody.innerHTML = "Merci ! Votre réservation a été reçue.";
+    modalBody.style.height = "250px";
+    modalBody.style.paddingTop = "50px";
+    modalBody.style.paddingLeft = "100px";
+    modalBody.style.paddingRight = "100px";
+    modalBody.style.textAlign = "center";
+    console.log("okValid");
+    return true;
+}
+}
+
+// valid event
+btnSubmit.forEach((btn) => btn.addEventListener("click", valid));
 
 // close modal form
 closeModal.addEventListener("click", () => {
